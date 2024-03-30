@@ -11,7 +11,7 @@
 현재 노드 temp (출발할 때 현재 노드는 s 노드이기 때문에 temp는 s로 초기화) 와 연결된 다음 노드 candidate를 방문할 떄,
 temp노드까지의 최대 중량 제한이 없다면(s==temp일 때 temp 노드까지의 최대 중량 제한이 없을 것이고 이 때 최대 중량 제한은 편의상 0으로 설정한다.), candidate 까지의 최대 중량 제한은 temp - candidate간의 중량 제한 값으로 정해진다.
 temp노드까지의 최대 중량 제한이 있다면 candidate 노드까지의 최대 중량 제한은, 현재 candidate 노드까지의 최대 중량 제한과 temp를 거쳐가는 루트의 최대 중량제한 중 큰 값으로 정한다.
-- 추가 설명
+- 추가 설명  
 candidate 노드까지의 현재 최대 중량 제한을 current_candidate_limit라고 하고, temp 노드까지의 현재 최대 중량 제한을 current_temp_limit라고하자.
 temp 노드와 candidate 노드 사이의 중량 제한을 new_limit라고 할때
 candidate 노드가지의 현재 최대 중량 제한은 max(current_candidate_limit, min(current_temp_limit, new_limit))으로 업데이트 된다.
