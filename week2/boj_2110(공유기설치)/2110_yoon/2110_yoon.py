@@ -28,8 +28,8 @@ while start <= end:
     # 만약 총 설치개수가 C보다 크면
     if cnt >= C:
         answer = mid # 일단 기록 
-        start = mid + 1 # 간격을 줄인다
+        start = mid + 1 # 간격을 늘림
     else:   # C보다 작으면
-        end = mid - 1 # 간격을 늘린다
+        end = mid - 1 # 간격을 줄임 
 
 print(answer)
