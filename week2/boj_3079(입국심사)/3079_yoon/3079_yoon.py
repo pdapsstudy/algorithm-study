@@ -4,31 +4,26 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 time = []    # 각 심사대에서 심사를 받는데 걸리는 시간 
 
-first = int(input())
-second = int(input())
-
 for i in range(N):
     K = int(input())
     time.append(K)
     
-time.sort() # 이분 탐색 전 오름차순 정렬 
+l = min(time)
+answer = r = max(time) * M 
 
-start = 0
-end = min(time) * M # TIME의최소값 * 사람 수
-result = 0
-
-while start <= end :
-    mid = (start + end) // 2
-    person = 0  # 처리한 사람 수 
-
-    # 각 심사대에서 주어진 시간동안 처리할 수 있는 사람 수 누적적
-    for t in time:
-        person += mid // t
-
-    if person >= M:
-        end = mid - 1   # 더 짧은 시간에 가능하기에 end를 줄여줌줌
-        result = mid
-    else:
-        start = mid + 1
-
-print(result)
+while l <= r:
+    total = 0   # mid시간 동안 검사할 수 있는 총 사람의 수
+    
+    m = (l+r) // 2
+    
+    for i in range(N):
+        total += m // time[i] # 각 작업별로 m시간동안 몇 번 수행 가능한 지 계산
+        
+    if total >= M:  # 목표 작업 수 이상인 경우 범위 축소
+        r = m - 1 
+        answer = min(answer, m)
+        
+    else:   # 범위를 늘려 탐색 
+        l = m + 1
+        
+print(answer)
