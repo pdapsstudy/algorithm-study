@@ -1,36 +1,38 @@
-from collections import deque
 import sys
+
 input = sys.stdin.readline
 M = int(input())
 
-def dfs(target):
-    Q = deque()
-    visited = [False] * (N+1)
-    node = graph[target]
-    if not visited[node]:
-        Q.append(node)
-    path = []
-
-    while Q:
-        now = Q.pop()
+def search(target, now):
+    global visited
+    if now == target:
         visited[now] = True
-        path.append(now)
-        if now == target:
-            return path
-        next = graph[now]
-        if not visited[next]:
-            Q.append(next)
+        return True
     
-    return []
-
+    next = graph[now]
+    if not visited[next]:
+        visited[next] = True
+        flag = search(target, next)
+        # 만일 친구 순환 만들어지지 않은 경우 -> 백트래킹으로 방문 해제
+        if not flag:
+            visited[next] = False
+    else:
+        return False
+        
     
 for _ in range(M):
     N = int(input())
     graph = [0] + list(map(int, input().split()))
-    result = []
-    for t in range(1, N+1):
-        if t in result:
-            continue
-        result += dfs(t)
+    visited = [False] * (N+1)
+    count = 0
 
-    print(N - len(result))
+    for node in range(1, N):
+        if not visited[node]:
+            flag = search(node, graph[node])
+            print(f"node {node} flag {flag}")
+            print(f"visited {visited}")
+            if flag:
+                count += 1
+    print(count)
+            
+
