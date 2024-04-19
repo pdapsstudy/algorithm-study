@@ -9,12 +9,10 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <iostream>
 #include <map>
 #include <string>
-#include <queue>
-#include <vector>
+
 using namespace std;
 int n,m;
 map<string,int> memo;
-
 int slice(string s){
     int a =0;
     string temp ="";
@@ -56,9 +54,9 @@ int main()
         
         cin >>s;
         
-        int a = slice(s);
+        n=n-slice(s);
         // cout<<used.size()<<"\n";
-        n= n-a;
+ 
         cout<<n<<"\n";
     }
     return 0;

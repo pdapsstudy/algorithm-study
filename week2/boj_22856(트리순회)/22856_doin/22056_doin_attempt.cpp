@@ -13,7 +13,6 @@ int main()
     for(int i=0;i<n;i++){
         int par,son1,son2;
         cin >>par>>son1>>son2;
-        
         if(par==now){
             if(son2 ==-1){
                 break;

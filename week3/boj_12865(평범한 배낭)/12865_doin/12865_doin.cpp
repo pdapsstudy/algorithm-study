@@ -30,9 +30,9 @@ int main(){
     getval();
     for(int i=0;i<=N;i++){
         for(int j=0;j<=W;j++){
-      // cout<<val[i][j]<<" ";
+            cout<<val[i][j]<<" ";
         }
-       //cout<<"\n";
+        cout<<"\n";
     }
     cout<<val[N][W];
     return 0;
