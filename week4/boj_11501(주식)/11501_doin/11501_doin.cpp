@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 using namespace std;
 int main()
@@ -27,14 +19,10 @@ int main()
         cin >>x;
         max_v=0;
         min_v=x;
-        // minValueUntilIndex[0]=min_v;
         val[0]=x;
         for(int j=1;j<n;j++){
             cin >>x;
             val[j]=x;
-            // if(x<min_v){
-            //     minValueUntilIndex[j]=min_v;
-            // }
         }
         for(int j=n-1;j>=0;j--){
             if(val[j]>max_v){
@@ -43,7 +31,6 @@ int main()
             maxValueUntilIndex[j]=max_v;
         }
         for(int j=0;j<n;j++){
-            // cout<<val[j]<<" "<<maxValueUntilIndex[j]<<"\n";
             ans=ans+maxValueUntilIndex[j]-val[j];
         }
         cout<<ans<<"\n";
