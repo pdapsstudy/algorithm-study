@@ -1,4 +1,4 @@
-# boj\_
+# boj_11501 주식
 
 <a href = "https://www.acmicpc.net/problem/11501"> 문제 바로 가기 </a>
 
