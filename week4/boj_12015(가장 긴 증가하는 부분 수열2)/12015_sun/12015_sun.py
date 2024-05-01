@@ -3,15 +3,28 @@ input = sys.stdin.readline
 
 N = int(input())
 arr = list(map(int, input().split()))
+nodes = [arr[0]]  # arr의 초기 값으로 처음 값 넣음
 
-sorted_arr = [(arr[i], i) for i in range(N)] # (arr 요소, index)로 리스트에 저장함
-sorted_arr.sort(key = lambda x :(x[0], x[1])) # 오름차순으로 정렬
-dp = [1 for _ in range(N)] # 올릴 수 있는 벽돌 개수 append 
+def binary_search(nodes, target):
+    start = 0
+    end = len(nodes)-1
+    answer = 0
+    while start <= end:
+        mid = (start + end) // 2
+        if target > nodes[mid]:
+            start = mid + 1
+            answer = start
+        else:
+            end = mid -1
+    return answer
 
-for curr in range(1, N): # 현재 벽돌이 가장 바닥에 깔릴때, 위로 올릴 수 있는 벽돌 counting
-    for next in range(curr):
-        if sorted_arr[curr][0] > sorted_arr[next][0] and sorted_arr[curr][1] > sorted_arr[next][1]:
-            dp[curr] = max(dp[curr], dp[next]+1)    
+for i in range(1, N):
+    target = arr[i]
+    # print(f"arr {arr} nodes {nodes}")
+    if target > nodes[-1]:  # 만일 뒤에 붙을 수 있으면 뒤에 append
+        nodes.append(target)
+    else:
+        idx = binary_search(nodes, target)
+        nodes[idx] = target
 
-print(max(dp))
-
+print(len(nodes))
