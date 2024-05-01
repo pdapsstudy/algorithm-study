@@ -1,8 +1,13 @@
+#########################################################
+# 처음 시도한 방법: 많이 꼬인 전기줄부터 제거하자
+# 안먹히는 반례가 생김: https://www.acmicpc.net/board/view/84972 참고
+# dp 로 해결해야함 -> 생각 너무 안나서 블로그 참고
+
 import sys
 input = sys.stdin.readline
 graph = []
 N = int(input())
-dp = [0 for _ in range(N)]
+dp = [1 for _ in range(N)]
 
 for _ in range(N):
     line = list(map(int, input().split()))
@@ -10,24 +15,9 @@ for _ in range(N):
 
 graph.sort(key=lambda x: x[0])
 
-# dp 초기화
-for curr in range(N):
-    s = graph[curr][0]
-    e = graph[curr][1]
-    for next in range(N):
-        if (graph[next][0] > s and graph[next][1] < e) or (graph[next][0] < s and graph[next][1] > e):
-            dp[curr] += 1
-result = 0
-while sum(dp) != 0:
-    now = dp.index(max(dp))
-    s = graph[now][0]
-    e = graph[now][1]
-    for next in range(len(dp)):
-        if (graph[next][0] > s and graph[next][1] < e) or (graph[next][0] < s and graph[next][1] > e):
-            dp[next] -= 1
+for i in range(N):
+    for j in range(i):
+        if graph[i][1] > graph[j][1]:
+            dp[i] = max(dp[i], dp[j]+1)
 
-    del graph[now]
-    del dp[now]
-    result += 1
-
-print(result)
+print(N-max(dp))
