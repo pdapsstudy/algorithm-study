@@ -68,12 +68,21 @@ ${input}
             
 ### 출력
 
-${output}`;
+${output}
 
+`;
+            let inputAndOutput="";
+            for(let i=0;i<sampleCount;i++){
+                inputAndOutput=inputAndOutput+`### 예제 입력${i+1}\n\n\`\`\`\n${sampleInputs[i]}\`\`\`\n\n### 예제 출력${i+1}\n\n\`\`\`\n${sampleOutputs[i]}\`\`\`\n\n`;
+            }
+            result=result+inputAndOutput;
             try {
-            await fs.mkdir(`week${week}/boj_${item}(${title})`, { recursive: true });
+            await fs.mkdir(`week${week}/boj_${item}(${title})/${item}_sy`, { recursive: true });
+            await fs.mkdir(`week${week}/boj_${item}(${title})/${item}_doin`, { recursive: true });
+            await fs.mkdir(`week${week}/boj_${item}(${title})/${item}_sun`, { recursive: true });
+            await fs.mkdir(`week${week}/boj_${item}(${title})/${item}_uk`, { recursive: true });
             await fs.writeFile(`week${week}/boj_${item}(${title})/problem.md`, result);
-            onsole.log(`File for problem ${item} created successfully.`);
+            console.log(`File for problem ${item} created successfully.`);
             } catch (e) {
                 console.error(`Error creating file for problem ${item}:`, e);
             }
@@ -83,4 +92,4 @@ ${output}`;
     }));
 }
 
-numbersToFiles(102, [1000,1100,1200,1300]);
+numbersToFiles(6, [11559,1111]);
