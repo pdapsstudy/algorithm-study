@@ -92,4 +92,4 @@ ${output}
     }));
 }
 
-numbersToFiles(6, [11559,1111]);
+numbersToFiles(6, [11559,1111,12100,3190,5397]);
