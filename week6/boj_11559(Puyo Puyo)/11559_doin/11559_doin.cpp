@@ -148,8 +148,7 @@ int main()
     // cout<<checkNbd(11,0);
     while (1)
     {
-        bool a = pang();
-        if (!a)
+        if (!pang())
             break;
         answer++;
     }
