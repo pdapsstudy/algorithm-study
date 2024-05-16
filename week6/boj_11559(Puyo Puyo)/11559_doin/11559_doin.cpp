@@ -145,7 +145,6 @@ int main()
             arr[i][j] = s[j];
         }
     }
-    // cout<<checkNbd(11,0);
     while (1)
     {
         if (!pang())
